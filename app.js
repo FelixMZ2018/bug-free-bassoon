@@ -37,3 +37,4 @@ temp_sensor.read(7, 4, function(err, temperature, humidity) {
   let value = await ads1115.measure('0+GND')
   console.log(value)
 })
+rpio.exit()
