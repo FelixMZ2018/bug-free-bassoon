@@ -3,14 +3,15 @@ var temp_sensor = require("node-dht-sensor");
 var BH1750 = require('bh1750');
 const ADS1115 = require('ads1115')
 const i2c = require('i2c-bus')
-var gpiop = require('rpi-gpio')
+var rpio = require('rpio');
 var light = new BH1750({});
 
 
 
 const sensors = [] 
 
-gpiop.setup(11, gpiop.DIR_HIGH)
+rpio.open(11, rpio.OUTPUT, rpio.HIGH);
+
 console.log("hello")
 temp_sensor.read(7, 4, function(err, temperature, humidity) {
   console.log(err)
@@ -35,4 +36,4 @@ temp_sensor.read(7, 4, function(err, temperature, humidity) {
   let value = await ads1115.measure('0+GND')
   console.log(value)
 })
-gpiop.destroy()
+rpio.close(11);
