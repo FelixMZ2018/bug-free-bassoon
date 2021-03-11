@@ -1,7 +1,7 @@
 {
   "name": "node_sensor",
   "version": "1.0.0",
-  "description": "",
+  "description": "A node based sensor for Smart Plants",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,6 @@
     "coffee-script": "^1.12.7",
     "i2c-bus": "^5.2.1",
     "node-dht-sensor": "^0.4.3",
-    "rpi-gpio": "^2.1.7"
+    "rpio": "^2.4.2"
   }
 }
