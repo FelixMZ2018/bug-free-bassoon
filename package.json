@@ -1,0 +1,23 @@
+{
+  "name": "node_sensor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelixMZ2018/bug-free-bassoon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelixMZ2018/bug-free-bassoon/issues"
+  },
+  "homepage": "https://github.com/FelixMZ2018/bug-free-bassoon#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-dht-sensor": "^0.4.3"
+  }
+}
