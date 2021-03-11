@@ -10,9 +10,8 @@ var light = new BH1750({});
 
 const sensors = [] 
 
-gpiop.setup(11, gpiop.DIR_OUT)
+gpiop.setup(11, gpiop.DIR_HIGH)
 console.log("hello")
-gpiop.write(11,true)
 temp_sensor.read(11, 4, function(err, temperature, humidity) {
   console.log(err)
     if (!err) {
@@ -36,5 +35,4 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   let value = await ads1115.measure('0+GND')
   console.log(value)
 })
-gpiop.write(11,true)
 gpiop.destroy()
