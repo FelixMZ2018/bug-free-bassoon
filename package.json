@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FelixMZ2018/bug-free-bassoon#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "node-dht-sensor": "^0.4.3"
+    "node-dht-sensor": "^0.4.3",
+    "rpi-gpio": "^2.1.7"
   }
 }
