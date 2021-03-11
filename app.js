@@ -10,7 +10,6 @@ var light = new BH1750({});
 
 const sensors = [] 
 
-gpiop.setup(11, gpiop.DIR_HIGH)
 
 console.log("hello")
 temp_sensor.read(7, 4, function(err, temperature, humidity) {
@@ -29,6 +28,9 @@ temp_sensor.read(7, 4, function(err, temperature, humidity) {
         console.log("light value is: ", value, "lx");
     }
 });
+setTimeout(function(){
+
+gpiop.setup(11, gpiop.DIR_HIGH)
 
  i2c.openPromisified(1).then(async (bus) => {
   const ads1115 = await ADS1115(bus)
@@ -36,4 +38,5 @@ temp_sensor.read(7, 4, function(err, temperature, humidity) {
   let value = await ads1115.measure('0+GND')
   console.log(value)
 })
+},1000)
 gpiop.write(11,false)
