@@ -12,7 +12,7 @@ const sensors = []
 
 gpiop.setup(11, gpiop.DIR_HIGH)
 console.log("hello")
-temp_sensor.read(11, 4, function(err, temperature, humidity) {
+temp_sensor.read(7, 4, function(err, temperature, humidity) {
   console.log(err)
     if (!err) {
       console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
