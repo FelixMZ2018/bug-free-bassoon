@@ -36,7 +36,7 @@ temp_sensor.read(11, 4, function (err, temperature, humidity) {
   if (!err) {
     console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
     temp1 = new SensorData("temperature", "digital", 1, temperature);
-    humidity1 = new SensorData("humidty", "digital", 1, humidity);
+    humidity1 = new SensorData("humidity", "digital", 1, humidity);
     sensor_array.push(temp1, humidity1);
   }
 });
