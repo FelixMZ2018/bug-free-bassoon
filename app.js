@@ -8,7 +8,12 @@ var light = new BH1750({});
 
 const hostname = process.env['HOSTNAME']
 class SensorData {
-  constructor(sensor_type,data_type,index,value)
+  constructor(sensor_type,data_type,index,data){
+    this.sensor_type = sensor_type
+    this.data_type = data_type
+    this.index = index
+    this.data = data
+  }
 }
 
 const sensor_array = [] 
@@ -19,8 +24,9 @@ console.log("hello")
 temp_sensor.read(11, 4, function(err, temperature, humidity) {
     if (!err) {
       console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
-      temp1 = SensorData.new("temperature","digital",1,temperature)
-      humidity1 = SensorData.new("humidty","digital",1,temperature)
+      temp1 = new SensorData("temperature","digital",1,temperature)
+      humidity1 = new SensorData("humidty","digital",1,temperature)
+      console.log(temp1)
       sensor_array.push(temp1)
       sensor_array.push(humidity1)
 
@@ -41,7 +47,7 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   const ads1115 = await ADS1115(bus)
   // ads1115.gain = 1
   let value = await ads1115.measure('0+GND')
-  console.log(value)
+  console.log(value / 31,99 )
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
 
