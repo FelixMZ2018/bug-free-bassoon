@@ -29,8 +29,7 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
       temp1 = new SensorData("temperature","digital",1,temperature)
       humidity1 = new SensorData("humidty","digital",1,temperature)
       console.log(temp1)
-      sensor_array.push(temp1)
-      sensor_array.push(humidity1)
+      sensor_array.push(temp1,humidity1)
 
     }
   });
@@ -50,7 +49,7 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   // ads1115.gain = 1
   let value = await ads1115.measure('0+GND')
   console.log(value)
-  const normalized = ((value - soil_moisture_dry)/(soil_moisture_wet-soil_moisture_dry))
+  const normalized = (((value - soil_moisture_dry)/(soil_moisture_wet-soil_moisture_dry))*1024)
   console.log(normalized)
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
