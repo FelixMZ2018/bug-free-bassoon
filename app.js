@@ -5,6 +5,8 @@ const ADS1115 = require('ads1115')
 const i2c = require('i2c-bus')
 var rpio = require('rpio')
 var light = new BH1750({});
+const soil_moisture_wet = 20000
+const soil_moisture_dry = 17000
 
 const hostname = process.env['HOSTNAME']
 class SensorData {
@@ -48,6 +50,8 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   // ads1115.gain = 1
   let value = await ads1115.measure('0+GND')
   console.log(value)
+  const normalized = ((value - soil_moisture_dry)/(soil_moisture_wet-soil_moisture_dry))
+  console.log(normalized)
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
 
