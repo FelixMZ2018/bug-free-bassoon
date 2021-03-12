@@ -14,7 +14,7 @@ const sensors = []
 rpio.open(11, rpio.OUTPUT, rpio.HIGH);
 
 console.log("hello")
-temp_sensor.read(7, 4, function(err, temperature, humidity) {
+temp_sensor.read(11, 4, function(err, temperature, humidity) {
   console.log(err)
     if (!err) {
       console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
@@ -37,4 +37,6 @@ temp_sensor.read(7, 4, function(err, temperature, humidity) {
   let value = await ads1115.measure('0+GND')
   console.log(value)
 })
+rpio.open(11, rpio.OUTPUT, rpio.LOW);
+
 rpio.exit()
