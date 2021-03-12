@@ -28,7 +28,6 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
       console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
       temp1 = new SensorData("temperature","digital",1,temperature)
       humidity1 = new SensorData("humidty","digital",1,humidity)
-      console.log(temp1)
       sensor_array.push(temp1,humidity1)
 
     }
@@ -51,11 +50,12 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   console.log(value)
   const normalized = (((value - soil_moisture_dry)/(soil_moisture_wet-soil_moisture_dry))*1024)
   soil1 = new SensorData("soil_moisture","analog",1,normalized)
-  console.log(soil1)
   sensor_array.push(soil1)
-  console.log(normalized)
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
 
-console.log(sensor_array)
+setTimeout(function(){
+  console.log(sensor_array.length)
+  console.log(sensor_array);
+}, 2000);
 rpio.exit()
