@@ -1,4 +1,4 @@
-axios = require('axios')
+const axios = require('axios')
 var temp_sensor = require("node-dht-sensor");
 var BH1750 = require('bh1750');
 const ADS1115 = require('ads1115')
@@ -6,18 +6,24 @@ const i2c = require('i2c-bus')
 var rpio = require('rpio')
 var light = new BH1750({});
 
+const hostname = process.env['HOSTNAME']
+class SensorData {
+  constructor(sensor_type,data_type,index,value)
+}
 
-
-
-const sensors = [] 
+const sensor_array = [] 
 
 rpio.open(11, rpio.OUTPUT, rpio.HIGH);
 
 console.log("hello")
 temp_sensor.read(11, 4, function(err, temperature, humidity) {
-  console.log(err)
     if (!err) {
       console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
+      temp1 = SensorData.new("temperature","digital",1,temperature)
+      humidity1 = SensorData.new("humidty","digital",1,temperature)
+      sensor_array.push(temp1)
+      sensor_array.push(humidity1)
+
     }
   });
   
@@ -39,4 +45,5 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
 
+console.log(sensor_array)
 rpio.exit()
