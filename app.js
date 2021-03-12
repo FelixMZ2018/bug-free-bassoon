@@ -9,6 +9,7 @@ const soil_moisture_wet = 20000;
 const soil_moisture_dry = 17000;
 
 const hostname = process.env["HOSTNAME"];
+const UUID = process.env['UUID']
 class SensorData {
   constructor(sensor_type, data_type, index, data) {
     this.sensor_type = sensor_type;
@@ -17,6 +18,14 @@ class SensorData {
     this.data = data;
   }
 }
+const battery_level = 100 
+
+// placeholder for battery level
+
+export const axiosInstance = axios.create({
+  baseURL: process.env['hostname'],
+  timeout: 1000,
+});
 
 const sensor_array = [];
 
@@ -58,5 +67,11 @@ rpio.open(11, rpio.OUTPUT, rpio.LOW);
 setTimeout(function () {
   console.log(sensor_array.length);
   console.log(sensor_array);
+
+
+  axiosInstance.post("/api/v1/sensors/data", {
+    battery_level: battery_level,
+    sensors: sensor_array,
+  },{headers:{"Authorization":  `Bearer ${UUID}`}})
 }, 2000);
 rpio.exit();
