@@ -47,7 +47,7 @@ temp_sensor.read(11, 4, function(err, temperature, humidity) {
   const ads1115 = await ADS1115(bus)
   // ads1115.gain = 1
   let value = await ads1115.measure('0+GND')
-  console.log(value / 31,99 )
+  console.log(value)
 })
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
 
