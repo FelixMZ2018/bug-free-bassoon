@@ -22,8 +22,8 @@ const battery_level = 100
 
 // placeholder for battery level
 
-export const axiosInstance = axios.create({
-  baseURL: process.env['hostname'],
+const axiosInstance = axios.create({
+  baseURL: hostname,
   timeout: 1000,
 });
 
