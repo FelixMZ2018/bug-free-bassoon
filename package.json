@@ -22,6 +22,7 @@
     "bh1750": "^0.0.5",
     "coffee-script": "^1.12.7",
     "i2c-bus": "^5.2.1",
+    "mcp-spi-adc": "^3.1.1",
     "node-dht-sensor": "^0.4.3",
     "rpio": "^2.4.2"
   }
